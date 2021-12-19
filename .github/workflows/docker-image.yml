@@ -16,3 +16,12 @@ jobs:
     - run: |
         docker build . -t imaginaproject.azurecr.io/calamarzo/imagina-project:${{ github.sha }}
         docker push imaginaproject.azurecr.io/calamarzo/imagina-project:${{ github.sha }}    
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'imagina-project'
+        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+        images: 'imaginaproject.azurecr.io/calamarzo/imagina-project:${{ github.sha }}'
