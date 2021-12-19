@@ -20,11 +20,20 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GB_TOKEN }}
 
-    - name: Build the Docker image
-      run: |
-        docker build . --file Dockerfile --tag ghcr.io/calamarzo/imagina-project:latest
-        docker run ghcr.io/calamarzo/imagina-project:latest
-        docker push ghcr.io/calamarzo/imagina-project:latest
+    - name: Build image and push to GitHub Container Registry
+      uses: docker/build-push-action@v2
+      with:
+        # relative path to the place where source code with Dockerfile is located
+        context: .
+        # Note: tags has to be all lower-case
+        tags: |
+          calamarzo/project_imagina:latest 
+          ghcr.io/calamarzo/project_imagina:latest
+        # build on feature branches, push only on master branch
+        push: ${{ github.ref == 'refs/heads/master' }}
+
+    - name: Image digest
+      run: echo ${{ steps.docker_build.outputs.digest }}
 
 
         
