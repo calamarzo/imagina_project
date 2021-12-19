@@ -28,7 +28,7 @@ jobs:
     # Token such as GITHUB_TOKEN that has `write:packages` scope to authenticate against GCHR.
         github-push-secret: ${{ secrets.GB_TOKEN }}
     # Docker Image name
-        docker-image-name: calamarzo/project_imagina
+        docker-image-name: project_imagina
     # Docker Image tag
         docker-image-tag: latest
     # Dockerfile path and name
