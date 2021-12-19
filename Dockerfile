@@ -2,8 +2,9 @@
 FROM httpd
 
 #Etiquetado
-LABEL maintainer="gisela.torres@returngis.net"
-LABEL project="lemoncode"
+LABEL maintainer="xcarroza@gmail.com"
+LABEL project="imagina"
+LABEL org.opencontainers.image.source="https://github.com/calamarzo/imagina-project"
 
 #Como metadato, indicamos que el contenedor utiliza el puerto 80
 EXPOSE 80
