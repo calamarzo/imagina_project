@@ -18,6 +18,7 @@ jobs:
         docker push imaginaproject.azurecr.io/calamarzo/imagina-project:${{ github.sha }}    
 
   deploy:
+    needs: build
     runs-on: ubuntu-latest
     steps:
     - uses: azure/webapps-deploy@v2
