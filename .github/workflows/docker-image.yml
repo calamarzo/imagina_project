@@ -20,9 +20,9 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GB_TOKEN }}
 
-    - name: Build the hello-world Docker image
+    - name: Build the Docker image
       run: |
-        docker build . --tag ghcr.io/calamarzo/imagina-project:latest
+        docker build . --file Dockerfile --tag ghcr.io/calamarzo/imagina-project:latest
         docker run ghcr.io/calamarzo/imagina-project:latest
         docker push ghcr.io/calamarzo/imagina-project:latest
 
