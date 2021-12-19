@@ -35,7 +35,4 @@ jobs:
         dockerfile-path: Dockerfile
     # Path to the build context
         build-context: .
-    
-    
-    - name: Image digest
-      run: echo ${{ steps.docker_build.outputs.digest }}
+  
